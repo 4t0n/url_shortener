@@ -9,5 +9,10 @@ app = FastAPI()
 app.include_router(links_router)
 
 
+@app.get("/")
+async def start_page():
+    return {"Message": "Test task for 5D"}
+
+
 if __name__ == "__main__":
-    uvicorn.run(app="main:app")
+    uvicorn.run(app="main:app", port=8080)
