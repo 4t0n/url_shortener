@@ -12,7 +12,7 @@ class ShortUrlRepository:
         self.session = session
 
     async def create_short_url(self, shortener: ShortKeyCreate) -> ShortKey:
-        short_url = ShortUrl(**shortener.model_dump())
+        short_url = ShortUrl(**shortener.model_dump(mode="json"))
         self.session.add(short_url)
         await self.session.commit()
         await self.session.refresh(short_url)
