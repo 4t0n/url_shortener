@@ -22,19 +22,22 @@ async def create_short_url(
     url_in: OriginalUrl,
     repo: ShortUrlRepository = Depends(get_shortener_repository),
 ):
-    short_key = await generate_short_key(repo)
-    if short_key is not None:
-        return await repo.create_short_url(
-            ShortKeyCreate(
-                original_url=url_in.original_url, short_key=short_key
-            )
+    result = await repo.create_short_url(
+        OriginalUrl(
+            original_url=url_in.original_url
+        ))
+    if result is None:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Short-key creating error!",
         )
-    raise HTTPException(
-        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        detail="Short-key creating error!",
-    )
+    return ShortKey(short_key=result.short_key)
 
 
-@links_router.get("/{shorten_url_id}")
+@links_router.get(
+    "/{shorten_url_id}",
+    response_model=OriginalUrl,
+    status_code=status.HTTP_307_TEMPORARY_REDIRECT,
+)
 async def get_original_url(shorten_url_id: str):
     pass

@@ -17,7 +17,7 @@ class OriginalUrl(BaseModel):
     @classmethod
     def check_domain(cls, value: HttpUrl):
         parsed = urlparse(str(value))
-        if parsed.netloc not in settings.ALLOWED_DOMAINS:
+        if parsed.hostname not in settings.ALLOWED_DOMAINS:
             raise ValueError("Invalid domain!")
         return value
 
