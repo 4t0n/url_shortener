@@ -18,5 +18,8 @@ class Base(DeclarativeBase):
 
 
 async def get_async_session():
+    """
+    Зависимость для получения асинхронной сессии.
+    """
     async with async_sessionmaker_() as session:
         yield session
