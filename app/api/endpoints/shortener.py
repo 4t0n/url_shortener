@@ -51,9 +51,9 @@ async def get_original_url(
     """
     try:
         original_url = await repo.get_url(ShortKey(short_key=shorten_url_id))
+        if original_url is None:
+            raise ValidationError
     except ValidationError:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
-    if original_url is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="URL not found!"
         )
