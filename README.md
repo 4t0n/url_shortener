@@ -45,6 +45,12 @@ alembic upgrade head
 uvicorn main:app
 ```
 
+Для запуска тестов:
+
+```
+pytest
+```
+
 ## Примеры
 
 Вот несколько примеров запросов к API:
