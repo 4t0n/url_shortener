@@ -1,7 +1,6 @@
-### Описание проекта:
+### Project Description::
 
-Тестовое задание для 5D HUB.
-Данное приложение реализует API для создания коротких ссылок.
+A test assignment for 5D HUB. This application implements an API for creating short links.
 
 ### Stack
 * Python 3.12;
@@ -11,9 +10,9 @@
 * Aiosqlite;
 * Alembic;
 
-### Для запуска на локальном сервере Windows:
+### Running on a Local Windows Server::
 
-Cоздать и активировать виртуальное окружение:
+Create and activate a virtual environment:
 
 ```
 python -m venv venv
@@ -23,7 +22,7 @@ python -m venv venv
 source venv/Scripts/activate
 ```
 
-Установить зависимости из файла requirements.txt:
+Install dependencies from requirements.txt:
 
 ```
 python3 -m pip install --upgrade pip
@@ -33,32 +32,32 @@ python3 -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Выполнить миграции:
+Run migrations:
 
 ```
 alembic upgrade head
 ```
 
-Запустить проект:
+Start the project:
 
 ```
 uvicorn main:app
 ```
 
-Для запуска тестов:
+Running Tests:
 
 ```
 pytest
 ```
 
-## Примеры
+## Examples
 
-Вот несколько примеров запросов к API:
+Here are some example API requests:
 
--  POST /s-link/ — создать ключ для ссылки. (Доступные домены указываются в переменных окружения.)
--  GET /s-link/{shorten_url_id}/ — получить получить полную ссылку по ключу.
+-  POST /s-link/ — create a short link key. (Available domains are specified in environment variables.)
+-  GET /s-link/{shorten_url_id}/ — retrieve the full URL by its key.
 
-Пример POST запроса:
+Example POST request:
 
 ```
 {
