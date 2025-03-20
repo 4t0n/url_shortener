@@ -23,7 +23,9 @@ config = context.config
 
 section = config.config_ini_section
 config.set_section_option(section, "DATABASE_URL", settings.DATABASE_URL)
-
+config.set_section_option(
+    section, "TEST_DATABASE_URL", settings.TEST_DATABASE_URL
+)
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:

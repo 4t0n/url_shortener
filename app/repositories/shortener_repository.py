@@ -23,6 +23,7 @@ class ShortUrlRepository:
             )
             self.session.add(short_url)
             try:
+                await self.session.flush()
                 await self.session.commit()
                 await self.session.refresh(short_url)
                 return ShortKey(short_key=short_url.short_key)
