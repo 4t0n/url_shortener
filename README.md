@@ -10,45 +10,26 @@ A test assignment for 5D HUB. This application implements an API for creating sh
 * Aiosqlite;
 * Alembic;
 
-### Running on a Local Windows Server::
+## Installation and Startup Order
 
-Create and activate a virtual environment:
+1. **Prepare your environment**
+   - Make sure you have [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on Windows.
+   - Clone the repository and navigate to the project root directory.
+   - Configure Environment Variables in `.env`.
 
-```
-python -m venv venv
-```
+2. **Running the Project using Docker Compose**
+   - Open a terminal in the project root directory.
+   - Run the following command:
+     ```
+     docker-compose up --build
+     ```
 
-```
-source venv/Scripts/activate
-```
-
-Install dependencies from requirements.txt:
-
-```
-python3 -m pip install --upgrade pip
-```
-
-```
-pip install -r requirements.txt
-```
-
-Run migrations:
-
-```
-alembic upgrade head
-```
-
-Start the project:
-
-```
-uvicorn main:app
-```
-
-Running Tests:
-
-```
-pytest
-```
+3. **Stopping and Removing Running Containers**
+   - Open a terminal in the project root directory.
+   - Run the following command:
+     ```
+     docker-compose down
+     ```
 
 ## Examples
 
